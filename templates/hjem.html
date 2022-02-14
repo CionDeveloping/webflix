@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/stylesheets/hjem.css">
+    <title>WEBFLIX</title>
+</head>
+<body>
+    <center>
+    <h1>WEBFLIX</h1>
+</center>
+{{pagination.links}}
+    <div class="movies" id="movies">
+        {% for movies in Movies %}
+        <div class="card">
+            <a href="/Movie_Detail?id={{movies.id}}">
+          <img src="https://image.tmdb.org/t/p/w500{{movies.poster_path}}" alt="Avatar" style="width:100%">
+          <div class="container">
+            <h4><b>{{movies.title}}</b> - {{movies.release_date}}</h4> 
+            <p><b>Rating - {{movies.vote_average}}</b></p>
+          </div>
+        </a>    
+        </div>
+        {% endfor %}
+    </div>
+{{pagination.links}}
+</body>
+</html>

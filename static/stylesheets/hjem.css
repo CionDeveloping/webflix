@@ -1,0 +1,99 @@
+/*
+Box shadows hentet fra https://getcssscan.com/css-box-shadow-examples
+Original card style hentet fra https://w3schools.com/
+*/
+.card {
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; 
+    transition: 0.3s;
+    max-width: 300px;
+    border-radius: 5px;
+    max-height: 800px;
+    overflow: hidden;
+    border-radius: 40px;
+    background-color: rgb(59, 59, 59);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 30px;   
+  }
+  
+  .card:hover {
+    box-shadow: rgba(0, 4, 255, 0.56) 0px 22px 70px 4px; 
+    transform: scale(1.05);
+  }
+  
+  img {
+    border-radius: 5px 5px 0 0;
+  }
+  
+.container {
+    padding: 2px 16px;
+    visibility: none;
+}
+.container:hover {
+    visibility: visible;
+}
+
+.pagination {
+    border-right: 1px solid #ddd;
+}
+.movies{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: space-between;
+}
+.movies:nth-child(3n) {
+    break-after: always; /* CSS 3 syntax */
+  }
+
+a{
+    text-decoration: none;
+    color: black;
+}
+body{
+    background-color: rgb(34, 34, 34);
+}
+p{
+    color: white;
+    font-family: sans-serif;
+}
+h4{
+    color: white;
+    font-family: sans-serif;
+}
+h1{
+    color: white;
+    font-size: 100px;
+    font-family: sans-serif;
+}
+
+
+.pagination{
+    display: flex;
+    margin: 10px 30px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+}
+.pagination li{
+    display: flex;
+    color: white;
+}
+.active a{
+    color: red;
+}
+.active span{
+    display: none;
+    font-family: sans-serif;
+    color: white;
+}
+.disabled span{
+    font-family: sans-serif;
+    color: white;
+}
+.page-item{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
