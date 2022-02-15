@@ -102,11 +102,24 @@ h2{
     margin-left: 10px;
 }
 
-.searchnav input[type=text] {
-    float: right;
+.search{
+    float: center;
     padding: 6px;
     border: none;
     margin-top: 8px;
     margin-right: 16px;
-    font-size: 17px;
+    font-size: 20px;
   }
+.searchtitle{
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+.btnsearch{
+    color: white;
+    background-color: rgb(36, 36, 36);
+    padding: 10px;
+}
+.btnsearch:hover{
+    background-color: red;
+}

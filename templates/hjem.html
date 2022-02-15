@@ -15,10 +15,10 @@
     <h2>Av Jonas Johansen</h2>
 </center>
 <nav class="searchnav">
-    <a class="navbar-brand" href="/Hjem">
-        WEBFLIX
+    <a class="searchtitle" href="/Hjem">
+        Hjem
     </a>
-        <input class="search" type="search" placeholder="Search" aria-label="Search" id="query">
+        <input class="search" type="search" placeholder="Søk" aria-label="Search" id="query">
         <button class="btnsearch" onclick="myFunction()">Søk</button>
         <script>
             function myFunction() {
@@ -28,6 +28,8 @@
         </script>
     </div>
 </nav>
+<br>
+<br>
 {{pagination.links}}
     <div class="movies" id="movies">
         {% for movies in Movies %}
