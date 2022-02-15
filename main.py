@@ -28,10 +28,10 @@ def details():
     crews = movie.credits(movie_id)
 
     if len(movie.videos(movie_id)) != 0:
-        return render_template('Movies_Details.html', Movies=m, Crews=crews,
+        return render_template('filmen.html', Movies=m, Crews=crews,
                                youtube=movie.videos(movie_id)[0].get("key"))
     else:
-        return render_template('Movies_Details.html', Movies=m, Crews=crews,
+        return render_template('filmen.html', Movies=m, Crews=crews,
                                youtube="")
 
 

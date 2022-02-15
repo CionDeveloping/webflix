@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>WEBFLIX</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/stylesheets/hjem.css">
     <style>
         .title-header {
             padding: .75rem 1.25rem;
@@ -36,7 +35,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="/Movies">
+    <a class="navbar-brand" href="/Hjem">
         WEBFLIX
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -45,7 +44,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="/Movies">Filmer</a>
+                <a class="nav-link active" href="/Hjem">Filmer</a>
             </li>
         </ul>
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="query"
@@ -59,29 +58,18 @@
         </script>
     </div>
 </nav>
-<main class="container">
-    <section class="movies" id="movies">
-        <div class="row">
-            {% for movies in Movies %}
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <article class="card">
-                    <header class="title-header">
-                        <h3>{{movies.title}}</h3>
-                    </header>
-                    <div class="card-block">
-                        <div class="img-card">
-                            <img src="https://image.tmdb.org/t/p/w500{{movies.poster_path}}" alt="Movie" class="w-100"/>
-                        </div>
-
-                        <a href="/Movie_Detail?id={{movies.id}}" class="btn btn-primary btn-block">
-                            <i class
-                                       ="fa fa-eye"></i> Legg til film </a>
-                    </div>
-                </article>
-            </div>
-            {% endfor %}
+    <div class="movies" id="movies">
+        {% for movies in Movies %}
+        <div class="card">
+            <a href="/Movie_Detail?id={{movies.id}}">
+          <img src="https://image.tmdb.org/t/p/w500{{movies.poster_path}}" alt="Avatar" style="width:100%">
+          <div class="container">
+            <h4><b>{{movies.title}}</b> - {{movies.release_date}}</h4> 
+            <p><b>Rating - {{movies.vote_average}}</b></p>
+          </div>
+        </a>    
         </div>
-    </section>
-</main>
+        {% endfor %}
+    </div>
 </body>
 </html>

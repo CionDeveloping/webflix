@@ -3,9 +3,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{Movies.title}} - Webflix</title>
 </head>
 <body>
+    <a href="/Hjem"><button>Hjem</button></a>
+    <h1>{{Movies.title}} - {{Movies.release_date}}</h1>
+    <button>Se filmen</button>
+    <p>{{Movies.overview}}</p>
+    <p> Rating - {{Movies.vote_average}}</p>
+    <img src="https://image.tmdb.org/t/p/w500{{Movies.poster_path}}"/>
+    <iframe src='https://www.youtube.com/embed/{{youtube}}' frameborder='0' allowfullscreen></iframe>
     
+    <p><span>Type film:</span>
+        {%for genre in Movies.genres %}
+        {{genre.name}},
+        {% endfor %}
+    </p>
+
+    <p><span>Produsert i:</span>
+        {% for country in Movies.production_countries %}
+        {{country.name}},
+        {% endfor %}
+    </p>
+
+    {%for crew in Crews.cast %}
+        <div>
+                <img src="https://image.tmdb.org/t/p/w500{{crew.profile_path}}" alt="{{crew.name}}"/>
+                <div>
+                <h4>{{crew.name}}</h4>
+            </div>
+        </div>
+        {% endfor %}
 </body>
 </html>
