@@ -3,9 +3,51 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{Movies.title}} - avspiller</title>
 </head>
 <body>
-    
+        <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
+        <video id="video-id" width="100%" height="100%" autoplay="false"><source src="/static/filmer/{{Movies.id}}.mp4" type="video/mp4" />
+        <script>
+            var myFP = fluidPlayer(
+                "video-id",	{
+            "layoutControls": {
+                "controlBar": {
+                    "autoHideTimeout": 3,
+                    "animated": true,
+                    "autoHide": true,
+                },
+                "htmlOnPauseBlock": {
+                    "html": null,
+                    "height": null,
+                    "width": null,
+                },
+                "logo": {
+                    "imageUrl": "../logo_full.png",
+                    "position": "top right",
+                    "clickUrl": null,
+                    "opacity": "0.8",
+                    "imageMargin": "10px",
+                },
+                "autoPlay": true,
+                "mute": false,
+                "allowTheatre": false,
+                "playPauseAnimation": true,
+                "playbackRateEnabled": false,
+                "allowDownload": true,
+                "playButtonShowing": true,
+                "fillToContainer": false,
+                "posterImage": "",
+                "title": '<a href="/Hjem" class="hjem">Hjem</a><h2>{{Movies.title}} - {{Movies.release_date}}</h2>',
+                "primaryColor": "rgb(52, 236, 159)" 
+            },
+            "vastOptions": {
+                "adList": [],
+                "adCTAText": false,
+                "adCTATextPosition": ""
+            }
+        })
+        </script>
+        </script>
 </body>
 </html>

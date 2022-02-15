@@ -8,7 +8,7 @@
 <body>
     <a href="/Hjem"><button>Hjem</button></a>
     <h1>{{Movies.title}} - {{Movies.release_date}}</h1>
-    <button>Se filmen</button>
+    <a href="/Avspiller?id={{Movies.id}}"><button>Se filmen</button></a>
     <p>{{Movies.overview}}</p>
     <p> Rating - {{Movies.vote_average}}</p>
     <img src="https://image.tmdb.org/t/p/w500{{Movies.poster_path}}"/>

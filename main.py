@@ -34,13 +34,19 @@ def details():
         return render_template('filmen.html', Movies=m, Crews=crews,
                                youtube="")
 
+@app.route('/Avspiller', methods=['GET'])
+def avspiller():
+    movie_id = request.args.get('id')
+    m = movie.details(movie_id)
+    return render_template('filmviewer.html', Movies=m)
+
+
 
 @app.route('/Search', methods=['GET'])
 def search():
     query = request.args.get('query')
     searching = movie.search(query)
     return render_template('search.html', Movies=searching)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
