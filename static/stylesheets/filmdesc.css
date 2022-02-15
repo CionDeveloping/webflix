@@ -1,0 +1,48 @@
+body{
+    background-color: rgb(241, 241, 241);
+}
+
+button{
+    background-color: rgb(26, 26, 26);
+    padding: 20px;
+    color: white;
+    border-radius: 20px;
+}
+button:hover {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.cast {
+    background-color: rgb(233, 230, 230);
+    transition: 0.3s;
+    flex-direction:row;
+    display: flex;
+    width: 60px;
+    margin-right: 10px;
+    margin-left: 10px;
+    align-content: space-between;
+    justify-content: space-between;
+  }
+  
+  .cast:hover {
+    box-shadow: rgba(0, 4, 255, 0.56) 0px 22px 70px 4px; 
+    transform: scale(1.05);
+  }
+
+.cast h4{
+    display:none;
+}
+.cast:hover h4{
+    display:block;
+}
+ .cast img {
+    max-width: 60px;
+  }
+  
+.casts {
+    padding: 2px 16px;
+    visibility: none;
+}
+.casts:hover {
+    visibility: visible;
+}
