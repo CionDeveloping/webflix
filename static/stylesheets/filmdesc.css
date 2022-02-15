@@ -107,5 +107,6 @@ button:hover {
    }
    
 .options button:active {
-    box-shadow: 4px 4px 12px #c5c5c5,
+    box-shadow: 4px 4px 12px #c5c5c5;
+}
          
