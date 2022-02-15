@@ -14,22 +14,12 @@
     <h1>WEBFLIX</h1>
     <h2>Av Jonas Johansen</h2>
 </center>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="searchnav">
     <a class="navbar-brand" href="/Hjem">
         WEBFLIX
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link active" href="/Hjem">Filmer</a>
-            </li>
-        </ul>
-        <input class="form-control mr-sm-2" type="search" placeholder="Søk" aria-label="Search" id="query"
-               style="width: 60%">
-        <button class="btn btn-outline-success my-2 my-sm-0" onclick="myFunction()">Søk</button>
+        <input class="search" type="search" placeholder="Search" aria-label="Search" id="query">
+        <button class="btnsearch" onclick="myFunction()">Søk</button>
         <script>
             function myFunction() {
                 query = document.getElementById("query").value;
