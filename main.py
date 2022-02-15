@@ -4,9 +4,9 @@ from tmdbv3api import TMDb, Movie
 from flask_paginate import Pagination, get_page_parameter
 
 tmdb = TMDb()
-tmdb.api_key = '672700e3d4dd3246c3c060a7ee138222' 
+tmdb.api_key = '672700e3d4dd3246c3c060a7ee138222'
 
-tmdb.language = 'en'
+tmdb.language = 'en' #etterhvert kan vi ha dynamisk language, så fort vi får gang på auth
 
 movie = Movie()
 

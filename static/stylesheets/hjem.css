@@ -101,7 +101,9 @@ h2{
     margin-right: 10px;
     margin-left: 10px;
 }
-
+.page-link{
+    color: white;
+}
 .search{
     float: center;
     padding: 6px;
@@ -123,3 +125,4 @@ h2{
 .btnsearch:hover{
     background-color: red;
 }
+

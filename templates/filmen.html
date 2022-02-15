@@ -9,26 +9,35 @@
 <body>
 
     <a href="/Hjem"><button>Hjem</button></a>
+<div class="maincard">
+
     <h1>{{Movies.title}} - {{Movies.release_date}}</h1>
-    <a href="/Avspiller?id={{Movies.id}}"><button>Se filmen</button></a>
-    <a href="/Leggtil?id={{Movies.id}}"><button>Legg til film</button></a>
+    <div class="options">
+        <a href="/Avspiller?id={{Movies.id}}"><button>Se filmen</button></a>
+        <a href="/Leggtil?id={{Movies.id}}"><button>Legg til film</button></a>
+        <img src="https://image.tmdb.org/t/p/w500{{Movies.poster_path}}"/>
+    </div>
+    <div class="moviedesc">
     <p>{{Movies.overview}}</p>
-    <p> Rating - {{Movies.vote_average}}</p>
-    <img src="https://image.tmdb.org/t/p/w500{{Movies.poster_path}}"/>
     <iframe src='https://www.youtube.com/embed/{{youtube}}' frameborder='0' allowfullscreen></iframe>
-    
-    <p><span>Type film:</span>
+    <p> <b>Rating - </b>{{Movies.vote_average}}</p>
+    <div class="filmtype">
+    <p><span><b>Sjanger:</b></span>
         {%for genre in Movies.genres %}
         {{genre.name}},
         {% endfor %}
     </p>
-
-    <p><span>Produsert i:</span>
+</div>
+<div class="filmprodland">
+    <p><span><b>Produsert i:</b></span>
         {% for country in Movies.production_countries %}
         {{country.name}},
         {% endfor %}
     </p>
-
+</div>
+</div>
+</div>
+<div class="filmcast">
     {%for crew in Crews.cast %}
         <div class="cast">
             <img src="https://image.tmdb.org/t/p/w500{{crew.profile_path}}" alt="{{crew.name}}"/>
@@ -37,5 +46,6 @@
             </div>
         </div>
         {% endfor %}
+    </div>
 </body>
 </html>
