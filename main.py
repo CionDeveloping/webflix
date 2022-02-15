@@ -1,3 +1,4 @@
+#Johansen Data - et jonas johansen produkt
 from flask import Flask, render_template, request
 from tmdbv3api import TMDb, Movie
 from flask_paginate import Pagination, get_page_parameter
@@ -17,9 +18,6 @@ def popular():
     popular_movies = movie.popular(page)
     pagination = Pagination(page=page, total=450, css_framework="bootstrap4")
     return render_template('hjem.html', Movies=popular_movies, pagination=pagination)
-
-
-
 
 @app.route('/Movie_Detail', methods=['GET'])
 def filmdesc():
