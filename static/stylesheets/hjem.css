@@ -3,16 +3,16 @@ Box shadows hentet fra https://getcssscan.com/css-box-shadow-examples
 Original card style hentet fra https://w3schools.com/
 */
 .card {
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; 
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
     transition: 0.3s;
     max-width: 300px;
     border-radius: 5px;
     max-height: 800px;
     overflow: hidden;
-    border-radius: 40px;
-    background-color: rgb(59, 59, 59);
-    margin-left: 10px;
-    margin-right: 10px;
+    border-radius: 30px;
+    background-color: rgb(218, 218, 218);
+    margin-left: 5px;
+    margin-right: 5px;
     margin-top: 30px;   
   }
   
@@ -51,23 +51,27 @@ a{
     color: black;
 }
 body{
-    background-color: rgb(34, 34, 34);
+    background-color: rgb(255, 255, 255);
 }
 p{
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: sans-serif;
 }
 h4{
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: sans-serif;
 }
 h1{
-    color: white;
-    font-size: 100px;
+    color: rgb(218, 218, 218);
+    font-size: 125px;
     font-family: sans-serif;
+    font-weight: 1000;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
 }
 h2{
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 50px;
     font-family: sans-serif;
 }
@@ -78,49 +82,74 @@ h2{
     margin: 10px 30px;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 40px;
+    font-family: sans-serif;
 }
 .pagination li{
     display: flex;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 .active a{
-    color: red;
+    color: rgb(0, 247, 255);
 }
 .active span{
     display: none;
     font-family: sans-serif;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 .disabled span{
     font-family: sans-serif;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 .page-item{
     margin-right: 10px;
     margin-left: 10px;
 }
 .page-link{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 .search{
     float: center;
-    padding: 6px;
+    padding: 20px;
+    border-radius: 20px;
     border: none;
     margin-top: 8px;
-    margin-right: 16px;
+    margin-right: 20px;
     font-size: 20px;
+    border: none;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    background-color: rgb(218, 218, 218);
   }
 .searchtitle{
-    color: white;
+    color: rgb(0, 0, 0);
     font-family: sans-serif;
-    font-size: 20px;
+    font-size: 30px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    background-color: rgb(218, 218, 218);
+    padding: 15px;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.searchtitle:hover{
+    color: rgb(0, 0, 0);
+    font-family: sans-serif;
+    font-size: 30px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    background-color: rgb(0, 255, 242);
+    padding: 15px;
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .btnsearch{
-    color: white;
-    background-color: rgb(36, 36, 36);
-    padding: 10px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(218, 218, 218);
+    padding: 25px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 .btnsearch:hover{
     background-color: red;
