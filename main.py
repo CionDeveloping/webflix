@@ -22,7 +22,7 @@ def popular():
 
 
 @app.route('/Movie_Detail', methods=['GET'])
-def details():
+def filmdesc():
     movie_id = request.args.get('id')
     m = movie.details(movie_id)
     crews = movie.credits(movie_id)
@@ -40,7 +40,11 @@ def avspiller():
     m = movie.details(movie_id)
     return render_template('filmviewer.html', Movies=m)
 
-
+@app.route('/Leggtil', methods=['GET'])
+def filmader():
+    movie_id = request.args.get('id')
+    m = movie.details(movie_id)
+    return render_template('filmadder.html', Movies=m)
 
 @app.route('/Search', methods=['GET'])
 def search():
