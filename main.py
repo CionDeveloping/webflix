@@ -2,6 +2,9 @@
 from flask import Flask, render_template, request
 from tmdbv3api import TMDb, Movie
 from flask_paginate import Pagination, get_page_parameter
+from tmdbv3api import Account
+from tmdbv3api import Authentication
+
 
 tmdb = TMDb()
 tmdb.api_key = '672700e3d4dd3246c3c060a7ee138222'
@@ -49,6 +52,31 @@ def search():
     query = request.args.get('query')
     searching = movie.search(query)
     return render_template('search.html', Movies=searching)
+
+@app.route('/loginn', methods=['GET'])
+def login():
+    USERNAME = "johansendata"
+    PASSWORD = "Helpmeindeed!123"
+    auth = Authentication(username=USERNAME, password=PASSWORD)
+    account = Account()
+    details = account.details()
+    account.add_to_watchlist(details.id, 335787 , "movie")
+    return render_template('loginn.html', auth=auth, details=details)
+
+@app.route('/watchlist', methods=['GET'])
+def watchlist():
+    try:
+        USERNAME = "johansendata"
+        PASSWORD = "Helpmeindeed!123"
+        auth = Authentication(username=USERNAME, password=PASSWORD)
+        account = Account()
+        details = account.details()
+    except KeyError:
+        page = request.args.get(get_page_parameter(), type=int, default=1)
+        watchlist = movie.popular(page)
+        pagination = Pagination(page=page, total=450)
+        account.add_to_watchlist(details.id, 335787 , "movie")
+        return render_template('watchlist.html', watchlist=watchlist, details=details, auth=auth, pagination=pagination)
 
 if __name__ == '__main__':
     app.run(debug=True)
