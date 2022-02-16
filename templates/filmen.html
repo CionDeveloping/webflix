@@ -20,7 +20,7 @@
     <div class="moviedesc">
     <p>{{Movies.overview}}</p>
     <iframe src='https://www.youtube.com/embed/{{youtube}}' frameborder='0' allowfullscreen></iframe>
-    <p> <b>Rating - </b>{{Movies.vote_average}}</p>
+    <p> <b>Rating: </b>{{Movies.vote_average}}</p>
     <div class="filmtype">
     <p><span><b>Sjanger:</b></span>
         {%for genre in Movies.genres %}
@@ -45,6 +45,14 @@
             <div class="casts">
             </div>
         </div>
+        {% endfor %}
+    </div>
+    <div class="similarmain">
+        {%for similar in Similar %}
+        <div class="similarinnhold">
+        <a href="/Movie_Detail?id={{similar.id}}"><img src="https://image.tmdb.org/t/p/w500{{similar.poster_path}}" alt="{{similar.title}}"></a>
+        <h3>{{similar.title}}</h3>
+    </div>
         {% endfor %}
     </div>
 </body>

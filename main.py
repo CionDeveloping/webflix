@@ -1,4 +1,4 @@
-#Johansen Data - et jonas johansen produkt
+#Johansen Data - et jonas johansen produkt | WEBFLIX V5
 from flask import Flask, render_template, request
 from tmdbv3api import TMDb, Movie
 from flask_paginate import Pagination, get_page_parameter
@@ -16,7 +16,7 @@ app = Flask(__name__, static_url_path='/static')
 def popular():
     page = request.args.get(get_page_parameter(), type=int, default=1)
     popular_movies = movie.popular(page)
-    pagination = Pagination(page=page, total=450, css_framework="bootstrap4")
+    pagination = Pagination(page=page, total=450)
     return render_template('hjem.html', Movies=popular_movies, pagination=pagination)
 
 @app.route('/Movie_Detail', methods=['GET'])
@@ -24,13 +24,13 @@ def filmdesc():
     movie_id = request.args.get('id')
     m = movie.details(movie_id)
     crews = movie.credits(movie_id)
-
+    s = movie.similar(movie_id)
     if len(movie.videos(movie_id)) != 0:
         return render_template('filmen.html', Movies=m, Crews=crews,
-                               youtube=movie.videos(movie_id)[0].get("key"))
+                               youtube=movie.videos(movie_id)[0].get("key"), Similar=s)
     else:
         return render_template('filmen.html', Movies=m, Crews=crews,
-                               youtube="")
+                               youtube="", Similar=s)
 
 @app.route('/Avspiller', methods=['GET'])
 def avspiller():
@@ -52,4 +52,5 @@ def search():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 

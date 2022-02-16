@@ -109,4 +109,50 @@ button:hover {
 .options button:active {
     box-shadow: 4px 4px 12px #c5c5c5;
 }
-         
+.similarmain{
+    background-color: rgb(228, 228, 228);
+    border-radius: 20px;
+    padding: 35px;
+    margin-top: 20px;
+    margin-right: 40px;
+    margin-left: 40px;
+    height: 135px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: row;
+    font-family: sans-serif;
+}
+
+.similarmain::-webkit-scrollbar {
+    display: none;
+  }
+
+  .similarinnhold {
+    background-color: rgb(233, 230, 230);
+    transition: 0.3s;
+    display: inline;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    margin-left: 10px;
+    float: inline-start;
+
+  }
+  
+  .similarinnhold:hover {
+    box-shadow: rgba(255, 0, 0, 0.56) 0px 22px 70px 4px; 
+    transform: scale(1.05);
+  }
+
+.similarinnhold h3{
+    display:none;
+}
+.similarinnhold:hover h3{
+    display:flex;
+}
+.similarinnhold img {
+    max-width: 60px;
+    border-radius: 10px;
+  }
+  
