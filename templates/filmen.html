@@ -9,8 +9,8 @@
 <body>
 
     <a href="/Hjem"><button>Hjem</button></a>
-<div class="maincard">
-
+<div class="maincard" style="background-image: url('https://image.tmdb.org/t/p/original{{Movies.backdrop_path}}');">
+    <div class="fullopacity">
     <h1>{{Movies.title}} - {{Movies.release_date}}</h1>
     <div class="options">
         <a href="/Avspiller?id={{Movies.id}}"><button>Se filmen</button></a>
@@ -34,6 +34,7 @@
         {{country.name}},
         {% endfor %}
     </p>
+</div>
 </div>
 </div>
 </div>

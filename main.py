@@ -1,5 +1,5 @@
 #Johansen Data - et jonas johansen produkt | WEBFLIX V5
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 from tmdbv3api import TMDb, Movie
 from flask_paginate import Pagination, get_page_parameter
 from tmdbv3api import Account
@@ -12,6 +12,8 @@ tmdb.api_key = '672700e3d4dd3246c3c060a7ee138222'
 tmdb.language = 'en' #etterhvert kan vi ha dynamisk language, så fort vi får gang på auth
 
 movie = Movie()
+
+
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -41,11 +43,6 @@ def avspiller():
     m = movie.details(movie_id)
     return render_template('filmviewer.html', Movies=m)
 
-@app.route('/Leggtil', methods=['GET'])
-def filmader():
-    movie_id = request.args.get('id')
-    m = movie.details(movie_id)
-    return render_template('filmadder.html', Movies=m)
 
 @app.route('/Search', methods=['GET'])
 def search():
@@ -53,30 +50,34 @@ def search():
     searching = movie.search(query)
     return render_template('search.html', Movies=searching)
 
-@app.route('/loginn', methods=['GET'])
-def login():
-    USERNAME = "johansendata"
-    PASSWORD = "Helpmeindeed!123"
-    auth = Authentication(username=USERNAME, password=PASSWORD)
+'''
+ALL KODE UNDER ER KUN TEST KODE OG IKKE I PRODUKSJON ENDA
+
+JOBBER MED EN DEL PROBLEMER FORTSATT.
+
+'''
+@app.route('/Leggtil', methods=['GET'])
+def filmader():
+    movie_id = request.args.get('id')
+    m = movie.details(movie_id)
+    return render_template('filmadder.html', Movies=m)
+
+@app.route('/loginn', methods=['POST', 'GET'])
+def login_render():
+    return render_template('loginn.html')
+
+@app.route('/minside', methods=['POST', 'GET'])
+def login_render_post():   
+    brukernavn = request.form["brukernavn"]
+    passord = request.form["passord"]
+    USERNAME = request.args.get("brukernavn")
+    PASSWORD = request.args.get("passord")
+    sesskey = "1b9a3a628a2e643aef54aca4469a6e12b33296f5"
+    apikey = tmdb.api_key
+    auth = Authentication(username=brukernavn, password=passord)
     account = Account()
     details = account.details()
-    account.add_to_watchlist(details.id, 335787 , "movie")
-    return render_template('loginn.html', auth=auth, details=details)
-
-@app.route('/watchlist', methods=['GET'])
-def watchlist():
-    try:
-        USERNAME = "johansendata"
-        PASSWORD = "Helpmeindeed!123"
-        auth = Authentication(username=USERNAME, password=PASSWORD)
-        account = Account()
-        details = account.details()
-    except KeyError:
-        page = request.args.get(get_page_parameter(), type=int, default=1)
-        watchlist = movie.popular(page)
-        pagination = Pagination(page=page, total=450)
-        account.add_to_watchlist(details.id, 335787 , "movie")
-        return render_template('watchlist.html', watchlist=watchlist, details=details, auth=auth, pagination=pagination)
+    return render_template('minside.html', auth=auth, details=details, sesskey=sesskey, apikey=apikey)
 
 if __name__ == '__main__':
     app.run(debug=True)
