@@ -24,7 +24,12 @@ Original card style hentet fra https://w3schools.com/
   img {
     border-radius: 5px 5px 0 0;
   }
-  
+.logo{
+    position: absolute;
+    top: 55px;
+    right: 30px;
+}
+
 .container {
     padding: 2px 16px;
     visibility: none;
