@@ -3,14 +3,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Loginn - WEBFLIX</title>
+    <link rel="stylesheet" href="/static/stylesheets/loginn.css">
+    <link rel="stylesheet" href="/static/stylesheets/hjem.css">
 </head>
 <body>
+    <center>
+    <h1>WEBFLIX - LOGG PÅ</h1>
     <form method="POST" action="/minside">
         <input type="text" name="brukernavn" id="brukernavn"/>
-        <input type="text" name="passord" id="passord"/>
+        <input type="password" name="passord" id="passord"/>
         <button type="submit">Logg inn</button>
-        
     </form>
+    <br><br><br><br>
+    <a href="/Hjem" class="hjembtn"><button>Hjem</button></a>
+</center>
 </body>
 </html>

@@ -23,16 +23,13 @@ file.addEventListener('change', (e) => {
 <body>
 <center>
 <div class="innholdmain">
-    <p>{{Movies.id}} - {{Movies.title}}</p>
-    <button>Legg til film</button>
+    <p>Film id = {{Movies.id}}</p>
+    <p>Film navn = {{Movies.title}}</p>
     <a href="/Movie_Detail?id={{Movies.id}}"><button    >Gå tilbake</button></a><br><br><br><br>
-    <div class="file-input">
-        <input type="file" id="file" class="file">
-        <label for="file">
-          Velg en fil
-          <p class="file-name"></p>
-        </label>
-      </div>
+    <form method="POST" action="" enctype="multipart/form-data">
+      <p><input type="file" name="file"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
 </div>
 </center>
 

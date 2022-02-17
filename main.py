@@ -1,22 +1,30 @@
 #Johansen Data - et jonas johansen produkt | WEBFLIX V5
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, flash
 from tmdbv3api import TMDb, Movie
 from flask_paginate import Pagination, get_page_parameter
+from werkzeug.utils import secure_filename
 from tmdbv3api import Account
 from tmdbv3api import Authentication
+import os
 
 
 tmdb = TMDb()
 tmdb.api_key = '672700e3d4dd3246c3c060a7ee138222'
 
-tmdb.language = 'en' #etterhvert kan vi ha dynamisk language, så fort vi får gang på auth
+tmdb.language = 'en' # vil etterhvert bli styrt av account systemet. kommer i V7.
 
 movie = Movie()
 
-
-
 app = Flask(__name__, static_url_path='/static')
 
+
+app.config['MAX_CONTENT_LENGTH'] = 900040 * 900000
+app.config['UPLOAD_EXTENSIONS'] = ['.mp4']
+app.config['UPLOAD_PATH'] = 'static/filmer'
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+  
 @app.route('/Hjem', methods=['GET'])
 def popular():
     page = request.args.get(get_page_parameter(), type=int, default=1)
@@ -61,6 +69,19 @@ def filmader():
     movie_id = request.args.get('id')
     m = movie.details(movie_id)
     return render_template('filmadder.html', Movies=m)
+
+@app.route('/Leggtil', methods=['GET', 'POST'])
+def upload_files():
+    uploaded_file = request.files['file']
+    filename = secure_filename(uploaded_file.filename)
+    if filename != '':
+        file_ext = os.path.splitext(filename)[1]
+        if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+            abort(400)
+        uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+        return '', 204
+        
+
 
 @app.route('/loginn', methods=['POST', 'GET'])
 def login_render():
