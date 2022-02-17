@@ -72,13 +72,15 @@ def filmader():
 
 @app.route('/Leggtil', methods=['GET', 'POST'])
 def upload_files():
+    movie_id = request.args.get('id')
     uploaded_file = request.files['file']
     filename = secure_filename(uploaded_file.filename)
     if filename != '':
         file_ext = os.path.splitext(filename)[1]
         if file_ext not in app.config['UPLOAD_EXTENSIONS']:
             abort(400)
-        uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+        prosfilnavn = (movie_id + '.mp4')
+        uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], prosfilnavn))
         return '', 204
         
 
