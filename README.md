@@ -4,7 +4,7 @@ Utviklet av Jonas Johansen @ Johansen Data
 ---------------------------------------------------
 #WEBFLIX
 - Et dårligere alternativ til plex, jellyfin eller emby😎
-
+- https://youtu.be/hMrMA1qr0XI
 
 ---------------------------------------------------
  - Box shadows hentet fra https://getcssscan.com/css-box-shadow-examples
