@@ -73,15 +73,25 @@ def filmader():
 @app.route('/Leggtil', methods=['GET', 'POST'])
 def upload_files():
     movie_id = request.args.get('id')
+    m = movie.details(movie_id)
     uploaded_file = request.files['file']
     filename = secure_filename(uploaded_file.filename)
     if filename != '':
         file_ext = os.path.splitext(filename)[1]
         if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+            filmlagttil = ("")
+            filmfailed = ("Feil filtype! kun .mp4!")
+            return render_template('filmadder.html', filmlagttil=filmlagttil, Movies=m, filmfailed=filmfailed)
             abort(400)
         prosfilnavn = (movie_id + '.mp4')
+        filmlagttil = ("Filmen er lagt til!")
+        filmfailed = ("")
         uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], prosfilnavn))
-        return '', 204
+        return render_template('filmadder.html', filmlagttil=filmlagttil, Movies=m, filmfailed=filmfailed)
+    else:
+        filmlagttil = ("")
+        filmfailed = ("Ingen fil? skjerp deg")
+        return render_template('filmadder.html', filmlagttil=filmlagttil, Movies=m, filmfailed=filmfailed)
         
 
 
