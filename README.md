@@ -3,7 +3,7 @@
 Utviklet av Jonas Johansen @ Johansen Data
 ---------------------------------------------------
 #WEBFLIX
-- Et dårligere alternativ til plex, jellyfin eller emby.
+- Et dårligere alternativ til plex, jellyfin eller emby😎
 
 
 ---------------------------------------------------
