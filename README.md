@@ -11,5 +11,6 @@ Utviklet av Jonas Johansen @ Johansen Data
  - Original card style hentet fra https://w3schools.com/
  - filmviewer basert på fluidplayer
  - kode bygget på tmdbv3api
+ - Radarr integrasjon med bruk python wrapper https://github.com/meisnate12/ArrAPI
 
 

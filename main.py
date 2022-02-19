@@ -43,12 +43,21 @@ def filmdesc():
     m = movie.details(movie_id)
     crews = movie.credits(movie_id)
     s = movie.similar(movie_id)
+    from pathlib import Path
+    path_to_file = 'static/filmer/' + movie_id + '.mp4'
+    path = Path(path_to_file)
+    if path.is_file():
+        filmeksistanse = "Se filmen"
+        Flink = "/Avspiller?id=" + movie_id
+    else:
+        filmeksistanse = "Ikke tilgjengelig"
+        Flink = ""
     if len(movie.videos(movie_id)) != 0:
         return render_template('filmen.html', Movies=m, Crews=crews,
-                               youtube=movie.videos(movie_id)[0].get("key"), Similar=s)
+                               youtube=movie.videos(movie_id)[0].get("key"), Similar=s, filmeksistanse=filmeksistanse, Flink=Flink)
     else:
         return render_template('filmen.html', Movies=m, Crews=crews,
-                               youtube="", Similar=s)
+                               youtube="", Similar=s, filmeksistanse=filmeksistanse, Flink=Flink)
 
 #Avspilleren for filmer
 @app.route('/Avspiller', methods=['GET'])
@@ -123,7 +132,7 @@ def radarr():
     movie_id = request.args.get('id')
     movie = radarr.get_movie(tmdb_id=movie_id)
     movie.add("/filmer", "Any")
-    return " ", 204
+    return "", 204
 
 if __name__ == '__main__':
     app.run(debug=True)
