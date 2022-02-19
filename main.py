@@ -48,7 +48,7 @@ def filmdesc():
     path = Path(path_to_file)
     if path.is_file():
         filmeksistanse = "Se filmen"
-        Flink = "/Avspiller?id=" + movie_id
+        Flink = '/Avspiller?id=' + movie_id
     else:
         filmeksistanse = "Ikke tilgjengelig"
         Flink = ""
