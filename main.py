@@ -59,6 +59,19 @@ def filmdesc():
         return render_template('filmen.html', Movies=m, Crews=crews,
                                youtube="", Similar=s, filmeksistanse=filmeksistanse, Flink=Flink)
 
+#Sletter filmer
+@app.route('/Filmsletter', methods=['GET', 'POST'])
+def filmsletter():
+    movie_id = request.args.get('id')
+    from pathlib import Path
+    filbane = 'static/filmer/' + movie_id + '.mp4'
+    fil = Path(filbane)
+    if fil.is_file():
+        os.remove(filbane)
+        return "", 204
+    else:
+        return "", 204
+
 #Avspilleren for filmer
 @app.route('/Avspiller', methods=['GET'])
 def avspiller():
