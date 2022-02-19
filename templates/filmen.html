@@ -11,10 +11,11 @@
     <a href="/Hjem"><button>Hjem</button></a>
 <div class="maincard" style="background-image: url('https://image.tmdb.org/t/p/original{{Movies.backdrop_path}}');">
     <div class="fullopacity">
-    <h1>{{Movies.title}} - {{Movies.release_date[:-6]}}</h1>
+    <h1>{{Movies.title}} - {{Movies.release_date[:-6]}}</h1>    
     <div class="options">
         <a href="/Avspiller?id={{Movies.id}}"><button>Se filmen</button></a>
         <a href="/Leggtil?id={{Movies.id}}"><button>Legg til film</button></a>
+        <a href="/Radarr?id={{Movies.id}}"><button>Hunt filmen</button></a>
         <img src="https://image.tmdb.org/t/p/w500{{Movies.poster_path}}"/>
     </div>
     <div class="moviedesc">
