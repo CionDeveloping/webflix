@@ -42,6 +42,12 @@ button:hover {
 .cast:hover h4{
     display:flex;
 }
+.cast h5{
+    display: flex;
+}
+.cast:hover h5{
+    display: none;
+}
  .cast img {
     max-width: 60px;
     border-radius: 10px;
@@ -144,6 +150,7 @@ button:hover {
 
   .similarinnhold {
     background-color: rgb(233, 230, 230);
+    color: black;
     transition: 0.3s;
     display: inline;
     width: 60px;

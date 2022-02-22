@@ -19,14 +19,35 @@ movie = Movie()
 app = Flask(__name__, static_url_path='/static')
 
 
-app.config['MAX_CONTENT_LENGTH'] = 900040 * 900000
-app.config['UPLOAD_EXTENSIONS'] = ['.mp4']
+app.config['MAX_CONTENT_LENGTH'] = 1000000 * 1000000
+app.config['UPLOAD_EXTENSIONS'] = ['.mp4', '.mkv']
 app.config['UPLOAD_PATH'] = 'static/filmer'
 
 # Sørger for at filtype er rett - laget for /Leggtil delen
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+#Sletter filmer
+@app.route('/Filmsletter', methods=['GET', 'POST'])
+def filmsletter():
+    from arrapi import RadarrAPI
+    baseurl = 'http://192.168.1.70:7878'
+    apikey = 'b1766fd305814131b4878451b3980c05'
+    radarr = RadarrAPI(baseurl, apikey)
+    movie_id = request.args.get('id')
+    movie = radarr.get_movie(tmdb_id=movie_id)
+    movie_id = request.args.get('id')
+    from pathlib import Path
+    filbane = 'static/filmer/' + movie_id + '.mp4'
+    fil = Path(filbane)
+    if fil.is_file():
+        os.remove(filbane)
+        movie.delete()
+        return "", 204
+    else:
+        movie.delete()
+        return "", 204
 
 # Hjem siden - lister populære filmer. 
 @app.route('/Hjem', methods=['GET'])
@@ -58,19 +79,6 @@ def filmdesc():
     else:
         return render_template('filmen.html', Movies=m, Crews=crews,
                                youtube="", Similar=s, filmeksistanse=filmeksistanse, Flink=Flink)
-
-#Sletter filmer
-@app.route('/Filmsletter', methods=['GET', 'POST'])
-def filmsletter():
-    movie_id = request.args.get('id')
-    from pathlib import Path
-    filbane = 'static/filmer/' + movie_id + '.mp4'
-    fil = Path(filbane)
-    if fil.is_file():
-        os.remove(filbane)
-        return "", 204
-    else:
-        return "", 204
 
 #Avspilleren for filmer
 @app.route('/Avspiller', methods=['GET'])
@@ -104,7 +112,7 @@ def upload_files():
         file_ext = os.path.splitext(filename)[1]
         if file_ext not in app.config['UPLOAD_EXTENSIONS']:
             filmlagttil = ("")
-            filmfailed = ("Feil filtype! kun .mp4!")
+            filmfailed = ("Feil filtype! kun .mp4, .mkv!")
             return render_template('filmadder.html', filmlagttil=filmlagttil, Movies=m, filmfailed=filmfailed)
             abort(400)
         prosfilnavn = (movie_id + '.mp4')
@@ -139,14 +147,16 @@ def login_render_post():
 @app.route('/Radarr', methods=['GET', 'POST'])
 def radarr():
     from arrapi import RadarrAPI
-    baseurl = 'http://192.168.50.36:7979'
-    apikey = '8a975ad8f2b3492099ddfab557d66990'
+    baseurl = 'http://192.168.1.70:7878'
+    apikey = 'b1766fd305814131b4878451b3980c05'
     radarr = RadarrAPI(baseurl, apikey)
     movie_id = request.args.get('id')
     movie = radarr.get_movie(tmdb_id=movie_id)
-    movie.add("/filmer", "Any")
+    movie.add("/movies", "Any")
     return "", 204
+
 
 if __name__ == '__main__':
     app.run(debug=True)
 
+d
