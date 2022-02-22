@@ -75,7 +75,7 @@ def filmdesc():
         Flink = ""
     if len(movie.videos(movie_id)) != 0:
         return render_template('filmen.html', Movies=m, Crews=crews,
-                               youtube=movie.videos(movie_id)[0].get("key"), Similar=s, filmeksistanse=filmeksistanse, Flink=Flink)
+                               youtube=movie.videos(movie_id)[0].get("key"), Similar=s, filmeksistanse=filmeksistanse, Flink=Flink, videoes=movie.videos(movie_id))
     else:
         return render_template('filmen.html', Movies=m, Crews=crews,
                                youtube="", Similar=s, filmeksistanse=filmeksistanse, Flink=Flink)
