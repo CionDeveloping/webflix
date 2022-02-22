@@ -43,7 +43,7 @@
 <div class="filmcast">
     {%for crew in Crews.cast %}
         <div class="cast">
-            <img src="https://image.tmdb.org/t/p/w500{{crew.profile_path}}" alt="{{crew.name}}"/>
+            <img src="https://image.tmdb.org/t/p/w500{{crew.profile_path if crew.profile_path is not none else '/vkcajIqORuKfd8uV2GYULlHut9o.jpg'}}" alt="{{crew.name}}"/>
             <h4>{{crew.name}}</h4>
             <h5>{{crew.character}}</h5>
             <div class="casts">
