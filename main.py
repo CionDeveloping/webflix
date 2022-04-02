@@ -10,7 +10,7 @@ import os
 
 
 tmdb = TMDb()
-tmdb.api_key = '672700e3d4dd3246c3c060a7ee138222'
+tmdb.api_key = ''
 
 tmdb.language = 'en' # vil etterhvert bli styrt av account systemet. kommer i V7.
 
@@ -33,7 +33,7 @@ def allowed_file(filename):
 def filmsletter():
     from arrapi import RadarrAPI
     baseurl = 'http://192.168.1.70:7878'
-    apikey = 'b1766fd305814131b4878451b3980c05'
+    apikey = ''
     radarr = RadarrAPI(baseurl, apikey)
     movie_id = request.args.get('id')
     movie = radarr.get_movie(tmdb_id=movie_id)
@@ -136,7 +136,7 @@ def login_render_post():
     passord = request.form["passord"]
     USERNAME = request.args.get("brukernavn")
     PASSWORD = request.args.get("passord")
-    sesskey = "1b9a3a628a2e643aef54aca4469a6e12b33296f5"
+    sesskey = ""
     apikey = tmdb.api_key
     auth = Authentication(username=brukernavn, password=passord)
     account = Account()
@@ -148,7 +148,7 @@ def login_render_post():
 def radarr():
     from arrapi import RadarrAPI
     baseurl = 'http://192.168.1.70:7878'
-    apikey = 'b1766fd305814131b4878451b3980c05'
+    apikey = ''
     radarr = RadarrAPI(baseurl, apikey)
     movie_id = request.args.get('id')
     movie = radarr.get_movie(tmdb_id=movie_id)
