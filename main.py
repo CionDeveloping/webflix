@@ -1,4 +1,4 @@
-#Johansen Data - et jonas johansen produkt | WEBFLIX V5
+
 from flask import Flask, render_template, request, url_for, redirect, flash
 from tmdbv3api import TMDb, Movie
 from flask_paginate import Pagination, get_page_parameter
