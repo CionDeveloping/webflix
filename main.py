@@ -10,9 +10,9 @@ import os
 
 
 tmdb = TMDb()
-tmdb.api_key = ''
+tmdb.api_key = '' # api key
 
-tmdb.language = 'en' # vil etterhvert bli styrt av account systemet. kommer i V7.
+tmdb.language = 'en' 
 
 movie = Movie()
 
@@ -147,8 +147,8 @@ def login_render_post():
 @app.route('/Radarr', methods=['GET', 'POST'])
 def radarr():
     from arrapi import RadarrAPI
-    baseurl = 'http://192.168.1.70:7878'
-    apikey = ''
+    baseurl = '' # Radarr url
+    apikey = '' # radarr Api key
     radarr = RadarrAPI(baseurl, apikey)
     movie_id = request.args.get('id')
     movie = radarr.get_movie(tmdb_id=movie_id)
@@ -159,4 +159,4 @@ def radarr():
 if __name__ == '__main__':
     app.run(debug=True)
 
-d
+
